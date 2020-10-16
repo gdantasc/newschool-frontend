@@ -31,6 +31,11 @@ export default {
             component: resolve(__dirname, 'pages/student/home.vue'),
           },
           {
+            path: "/certificado-info/:idUser/:idCourse",
+            name: 'certificado-info',
+            component: resolve(__dirname, 'pages/public/certificate_info.vue'),
+          },
+          {
             path: 'perfil',
             name: 'meu-perfil',
             component: resolve(__dirname, 'pages/student/profile.vue'),
@@ -99,6 +104,11 @@ export default {
             path: 'home',
             name: 'admin-home',
             component: resolve(__dirname, 'pages/admin/home.vue'),
+          },
+          {
+            path: 'dashboard',
+            name: 'admin-dashboard',
+            component: resolve(__dirname, 'pages/admin/dashboard.vue'),
           },
           {
             path: 'perfil',
@@ -185,6 +195,12 @@ export default {
       MY_COURSES: 'api/v1/course-taken/user/',
       FACEBOOK_LOGIN: 'oauth/facebook/token',
       GOOGLE_LOGIN: 'oauth/google/token',
+      
+      TOTAL_USERS: '/api/v1/user',
+      ACTIVE_USERS: '/api/v1/dashboard/user/quantity',
+      COURSE_VIEWS: '/api/v1/dashboard/course/views',      
+      NS_CERTIFICATED_QUANTITY: '/api/v1/dashboard/course-taken/user/quantity',
+      CERTIFICATE_QUANTITY: '/api/v1/dashboard/certificate/quantity',
     },
     endpointCertificateCourseTaken: {
       CERTIFICATES_COURSE_TAKEN_ME: 'api/v1/course-taken/certificate/user/',
@@ -247,6 +263,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
+    '~/plugins/notifier.js',
     '~/plugins/cordova.client.js',
     '~/plugins/admin-components.js',
     { src: '~/plugins/ga.js', mode: 'client' },
